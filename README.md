@@ -1,2 +1,3 @@
 # API-Mongo-Python
-Emma petalda
+
+Api básica utilizando flask, mongo y python

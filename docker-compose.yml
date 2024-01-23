@@ -12,5 +12,15 @@ services:
     
   python:
     build: .
+    ports:
+      - 5000:5000
     depends_on:
       - mongo
+    develop:
+      watch:
+        - action: rebuild
+          path: app
+        - action: rebuild
+          path: requirements.txt
+        - action: rebuild
+          path: Dockerfile
