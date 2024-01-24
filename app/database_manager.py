@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 
 
 def connect_db(user, password, host, port=27017):
@@ -24,15 +25,15 @@ def get_notes(database):
 
 
 def delete_note(database, id):
-    return database.notes.delete_one({"_id": id})
+    return database.notes.delete_one({"_id": ObjectId(id)})
 
 
 def update_note(database, id, new_note):
-    return database.notes.update_one({"_id": id}, {"$set": new_note})
+    return database.notes.update_one({"_id": ObjectId(id)}, {"$set": new_note})
 
 
 def get_notes_by_id(database, id):
-    return database.notes.find({"_id": id})
+    return database.notes.find({"_id": ObjectId(id)})
 
 
 def delete_all_notes(database):
